@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import Quote from "./components/Quote/Quote";
+import NumberCreditCard from "./components/NumberCreditCard/NumberCreditCard";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-screen overflow-y-auto overflow-x-hidden align-center font-poppins text-white px-4 py-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+      <NavBar />
+      <Quote />
+      <NumberCreditCard />
     </div>
   );
 }
