@@ -1,35 +1,56 @@
 import { useState } from "react";
-import { GiSunRadiations } from "react-icons/gi";
+import { BsSunFill } from "react-icons/bs";
+import { FaMoon } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { MdOutlineClose } from "react-icons/md";
-const NavBar = () => {
+import useDarkMode from "../../useDarkMode";
+const NavBar = (props) => {
+  const { mobileSize } = props;
   const [openMenuResponsive, setOpenMenuResponsive] = useState(false);
   const handleMenuResponsive = () => {
     setOpenMenuResponsive(!openMenuResponsive);
   };
+  const [isDarkMode, toggleDarkMode] = useDarkMode();
   return (
     <nav className="flex items-center justify-between">
       <div className="flex items-center">
         <div className="text-24 font-bold mr-3">Kenova</div>
-        <GiSunRadiations
-          size={"48px"}
-          color="#FEFEFE"
-          className="cursor-pointer"
-        />
+        {isDarkMode ? (
+          <BsSunFill
+            size={"35px"}
+            color="#FEE082"
+            className="cursor-pointer"
+            onClick={() => toggleDarkMode(!isDarkMode)}
+          />
+        ) : (
+          <FaMoon
+            size={"35px"}
+            color="#FEE082"
+            className="cursor-pointer"
+            onClick={() => toggleDarkMode(!isDarkMode)}
+          />
+        )}
       </div>
-      <ul className="ml-auto text-20 font-semibold">
-        {openMenuResponsive ? (
+      <ul className="md:flex md:gap-10 ml-auto text-18 z-10 font-semibold">
+        {openMenuResponsive && mobileSize ? (
           <MdOutlineClose
             size={"32px"}
             className="cursor-pointer z-30"
             onClick={handleMenuResponsive}
           />
-        ) : (
+        ) : !openMenuResponsive && mobileSize ? (
           <HiOutlineMenu
             size={"32px"}
             className="cursor-pointer z-30"
             onClick={handleMenuResponsive}
           />
+        ) : (
+          <>
+            <li className="hover-button">Features</li>
+            <li className="hover-button">Products</li>
+            <li className="hover-button mr-20">Contact</li>
+            <li className="hover-button">Information</li>
+          </>
         )}
 
         {openMenuResponsive && (

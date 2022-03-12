@@ -4,6 +4,9 @@
 
 @layer components {
   .content {
-    @apply mb-[10px] ml-[75px] flex items-start justify-start  gap-5 mt-[70px] mr-[30px] items-center;
+    @apply mb-[10px] ml-[75px] md:mx-0 flex items-start justify-start  gap-5 mt-[70px] mr-[30px] items-center;
+  }
+  .hover-button {
+    @apply cursor-pointer hover:text-purple-500 transition-all duration-200;
   }
 }
